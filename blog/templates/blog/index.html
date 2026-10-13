@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="container">
+    <h2 class="my-4">Barcha Yangiliklar</h2>
+    <div class="d-flex flex-wrap gap-5">
+        {% for article in articles %}
+       <div class="card" style="width: 18rem;">
+            <img src="{{article.get_image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                  <h5 class="card-title">{{article.title | truncatewords:5}}</h5>
+                  <p class="card-text">{{article.info | truncatewords:15}}</p>
+                  <a href="{% url 'detail' article.pk %}" class="btn btn-primary">Detail</a>
+            </div>
+       </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock main %}
